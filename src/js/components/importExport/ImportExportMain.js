@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import PropTypes from 'prop-types';
 import ImportExportAction from '../../actions/ImportExportAction';
 import ImportExport from './ImportExport';
@@ -26,7 +25,7 @@ export default class ImportExportMain extends Component {
     }
 
     handleExport() {
-
+        ImportExportAction.export();
     }
 
     render() {
@@ -43,7 +42,7 @@ export default class ImportExportMain extends Component {
                         <HeadImportExport main="true" icon="import-export-icon" title="Import/Export Managment" firstMessage="" />
                     </div>
                     <div className="">
-                        <HeadImportExport handleClick={this.handleImport} icon="import-icon" title="Import" firstMessage="Upload your previous backup on portal." />
+                        <HeadImportExport handleClick={this.handleImport} icon="import-icon" title="Import" firstMessage="Upload your previous data on portal." />
                     </div>
                     <div className="">
                         <HeadImportExport handleClick={this.handleExport} icon="export-icon" title="Export" firstMessage="Receive a file containing all your data." />

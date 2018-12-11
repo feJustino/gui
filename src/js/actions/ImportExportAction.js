@@ -2,7 +2,6 @@
 import ImportManager from '../comms/ImportExport/ImportManager';
 import ExportManager from '../comms/ImportExport/ExportManager';
 import toaster from '../comms/util/materialize';
-import Axios from 'axios';
 
 const alt = require('../alt');
 
@@ -38,25 +37,17 @@ class ImportExportActions {
     }
 
     export() {
-        Axios({
-            url: 'http://api.dev/file-download',
-            method: 'GET',
-            responseType: 'blob', // important
-        }).then((response) => {
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'file.json');
-            document.body.appendChild(link);
-            link.click();
-        });
-        
         return (dispatch) => {
             dispatch();
             ExportManager.export()
                 .then((file) => {
-                    let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(file));
-                    this.exportFile(data);
+                    console.log(file)
+                    var file = new Blob([JSON.stringify(file)], {type: 'text/json'});
+                    var atag = document.createElement("a");
+                    atag.href = URL.createObjectURL(file);
+                    atag.download = 'DojotData.json'
+                    atag.click();
+                    this.exportFile(file);
                 })
                 .catch((error) => {
                     this.exportFailed(error);
