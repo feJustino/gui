@@ -16,6 +16,7 @@ import { DeviceCardList } from './DeviceCard';
 import {
     Pagination, FilterLabel, GenericOperations,
 } from '../utils/Manipulation';
+import { Trans } from 'react-i18next';
 
 
 // UI elements
@@ -212,7 +213,7 @@ class Devices extends Component {
         return (
             <div className="full-device-area">
                 <AltContainer store={DeviceStore}>
-                    <NewPageHeader title="Devices" subtitle="" icon="device">
+                    <NewPageHeader title={<Trans i18nKey="devices.title" />} subtitle="" icon="device">
                         <FilterLabel ops={this.dev_opex} text="Filtering Devices" />
                         <Pagination show_pagination={show_pagination} ops={this.dev_opex} />
                         <OperationsHeader displayToggle={displayToggle} toggleSearchBar={this.toggleSearchBar.bind(this)} />
