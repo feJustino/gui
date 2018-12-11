@@ -17,7 +17,9 @@ export default class AlertImport extends Component {
     }
 
     render() {
-        const { title, firstMessage, label, click } = this.props;
+        const {
+            title, firstMessage, label, click,
+        } = this.props;
         return (
             <div className="">
                 <div className="row confirm-modal-import">
@@ -31,8 +33,18 @@ export default class AlertImport extends Component {
                         </div>
                     </div>
                     <div className="col s12 text-right">
-                        <DojotBtnClassic is_secondary onClick={this.dismiss} label="Cancel" title="Cancel" />
-                        <DojotBtnClassic is_secondary={false} onClick={() => click()} label={label} title={label} />
+                        <DojotBtnClassic
+                            is_secondary
+                            onClick={this.dismiss}
+                            label="Cancel"
+                            title="Cancel"
+                        />
+                        <DojotBtnClassic
+                            is_secondary={false}
+                            onClick={() => click()}
+                            label={label}
+                            title={label}
+                        />
                     </div>
                 </div>
                 <div className="modal-background" onClick={this.dismiss} />

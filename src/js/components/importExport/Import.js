@@ -47,7 +47,6 @@ export default class Import extends Component {
     uploadFile() {
         const { file } = this.state;
         const text = file[0];
-        console.log('text.size :', text.size);
         if (file.length > 0) {
             const reader = new FileReader();
             reader.readAsText(text, 'UTF-8');
