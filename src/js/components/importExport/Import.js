@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FilePond, File, registerPlugin } from 'react-filepond';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import { translate } from 'react-i18next';
 import toaster from '../../comms/util/materialize';
 import ImportExport from './ImportExport';
 import HeadImportExport from './HeadImportExport';
@@ -10,7 +11,7 @@ import AlertImport from './AlertImport';
 
 registerPlugin(FilePondPluginFileValidateType, FilePondPluginFileValidateSize);
 
-export default class Import extends Component {
+class Import extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,21 +63,21 @@ export default class Import extends Component {
     }
 
     render() {
-        const label = 'Save';
-        const title = 'Import new datas';
-        const firstMessage = 'You will remove all data. Are you sure?';
+        const { openModal, t } = this.props;
         const { showModal, file } = this.state;
-        const { openModal } = this.props;
+        const label = t('button.save.label');
+        const title = t('importExport.alert.title');
+        const firstMessage = t('importExport.alert.sub');
         return (
             <div>
                 <ImportExport
                     openModal={openModal}
                     toggleSidebar={this.dismiss}
                     save
-                    label="Import"
+                    label={t('importExport.import.button')}
                     handleClick={this.handleOpenModal}
                 >
-                    <HeadImportExport main="true" icon="import-icon" title="Import" firstMessage="Drag the a file JSON to restore your data." />
+                    <HeadImportExport main icon="import-icon" title={t('importExport.import.title')} firstMessage={t('importExport.import.subImport')} />
                     <FilePond
                         ref={this.pond}
                         onupdatefiles={(fileItems) => {
@@ -113,4 +114,7 @@ export default class Import extends Component {
 
 Import.propTypes = {
     openModal: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired,
 };
+
+export default translate()(Import);

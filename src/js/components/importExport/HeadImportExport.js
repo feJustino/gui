@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 
 const HeadImportExport = (props) => {
     const {
@@ -8,7 +8,7 @@ const HeadImportExport = (props) => {
     if (!main) {
         return (
             <div
-                onClick={() => {}}
+                onClick={() => handleClick()}
                 className="over head-sub"
                 role="button"
                 tabIndex={0}
@@ -37,12 +37,19 @@ const HeadImportExport = (props) => {
     );
 };
 
-HeadImportExport.propTypes = {
-    main: PropTypes.bool.isRequired,
-    icon: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired,
-    firstMessage: PropTypes.string.isRequired,
+HeadImportExport.defaultProps = {
+    firstMessage: '',
+    handleClick: func,
+    main: false,
 };
+
+HeadImportExport.propTypes = {
+    main: PropTypes.bool,
+    icon: PropTypes.string.isRequired,
+    handleClick: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    firstMessage: PropTypes.string,
+};
+
 
 export default HeadImportExport;

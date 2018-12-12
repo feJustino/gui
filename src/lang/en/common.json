@@ -9,9 +9,30 @@
     "save": {
       "label": "Save",
       "alt": "Click to save"
+    },
+    "cancel":{
+      "label": "Cancel",
+      "alt": "Click to Cancel"
     }
   },
   "devices": {
     "title": "Devices"
+  },
+  "importExport":{
+    "mainTitle": "Import/Export Managment",
+    "import":{
+      "title": "Import",
+      "sub": "Upload your previous data on portal.",
+      "subImport":"Drag the a file JSON to restore your data.",
+      "button": "Import"
+    },
+    "export":{ 
+      "title": "Export",
+      "sub": "Receive a file containing all your data."
+    },
+    "alert":{
+      "title":"Import new datas",
+      "sub":"You will remove all data. Are you sure?"
+    }
   }
 }

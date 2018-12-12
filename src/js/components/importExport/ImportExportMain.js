@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import ImportExportAction from '../../actions/ImportExportAction';
 import ImportExport from './ImportExport';
 import HeadImportExport from './HeadImportExport';
 import Import from './Import';
 
-export default class ImportExportMain extends Component {
+class ImportExportMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +30,7 @@ export default class ImportExportMain extends Component {
     }
 
     render() {
-        const { openModal, toggleSidebar } = this.props;
+        const { openModal, toggleSidebar, t } = this.props;
         const { openImport } = this.state;
         return (
             <div>
@@ -39,13 +40,13 @@ export default class ImportExportMain extends Component {
                     save={false}
                 >
                     <div className="">
-                        <HeadImportExport main="true" icon="import-export-icon" title="Import/Export Managment" firstMessage="" />
+                        <HeadImportExport main icon="import-export-icon" title={t('importExport.mainTitle')} firstMessage="" />
                     </div>
                     <div className="">
-                        <HeadImportExport handleClick={this.handleImport} icon="import-icon" title="Import" firstMessage="Upload your previous data on portal." />
+                        <HeadImportExport handleClick={this.handleImport} icon="import-icon" title={t('importExport.import.title')} firstMessage={t('importExport.import.sub')} />
                     </div>
                     <div className="">
-                        <HeadImportExport handleClick={this.handleExport} icon="export-icon" title="Export" firstMessage="Receive a file containing all your data." />
+                        <HeadImportExport handleClick={this.handleExport} icon="export-icon" title={t('importExport.export.title')} firstMessage={t('importExport.export.sub')} />
                     </div>
                 </ImportExport>
                 {openImport ? <Import openModal={this.openImport} /> : null}
@@ -57,4 +58,7 @@ export default class ImportExportMain extends Component {
 ImportExportMain.propTypes = {
     openModal: PropTypes.func.isRequired,
     toggleSidebar: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired,
 };
+
+export default translate()(ImportExportMain);

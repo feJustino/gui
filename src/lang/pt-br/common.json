@@ -9,9 +9,30 @@
     "save": {
       "label": "Salvar",
       "alt": "Clique para Salvar"
+    },
+    "cancel":{
+      "label": "Cancelar",
+      "alt": "Clique para Cancelar"
     }
   },
   "devices": {
     "title": "Dispositivos"
+  },
+  "importExport":{
+    "mainTitle": "Gerenciamento de Importação/Exportação",
+    "import":{
+      "title": "Importação",
+      "sub": "Envie seus dados anteriores ao portal.",
+      "subImport":"Arraste o arquivo JSON para restaurar seus dados.",
+      "button": "Importar"
+    },
+    "export":{ 
+      "title": "Exportação",
+      "sub": "Receba um arquivo contendo todos seus dados."
+    },
+    "alert":{
+      "title":"Importar novos dados",
+      "sub":"Você irá remover todos os seus dados. Tem certeza?"
+    }
   }
 }

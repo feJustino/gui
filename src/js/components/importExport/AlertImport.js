@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import {
     DojotBtnClassic,
 } from '../DojotButton';
 
-export default class AlertImport extends Component {
+class AlertImport extends Component {
     constructor(props) {
         super(props);
 
@@ -18,7 +19,7 @@ export default class AlertImport extends Component {
 
     render() {
         const {
-            title, firstMessage, label, click,
+            t, title, firstMessage, label, click,
         } = this.props;
         return (
             <div className="">
@@ -36,8 +37,8 @@ export default class AlertImport extends Component {
                         <DojotBtnClassic
                             is_secondary
                             onClick={this.dismiss}
-                            label="Cancel"
-                            title="Cancel"
+                            label={t('button.cancel.alt')}
+                            title={t('button.cancel.label')}
                         />
                         <DojotBtnClassic
                             is_secondary={false}
@@ -47,7 +48,7 @@ export default class AlertImport extends Component {
                         />
                     </div>
                 </div>
-                <div className="modal-background" onClick={this.dismiss} />
+                <div className="modal-background" onClick={() => this.dismiss()} onKeyPress={this.dismiss} role="button" tabIndex={0} />
             </div>
         );
     }
@@ -59,4 +60,7 @@ AlertImport.propTypes = {
     title: PropTypes.string.isRequired,
     firstMessage: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    t: PropTypes.func.isRequired,
 };
+
+export default translate()(AlertImport);
